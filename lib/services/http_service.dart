@@ -42,7 +42,7 @@ class Network {
     LogService.i('Api $BASE$api');
     LogService.d('Params $params');
     LogService.w('Response ${response.body}');
-    if (response.statusCode == 200 || response.statusCode == 201) {
+    if (response.statusCode == 200) {
       return response.body;
     }
     return null;

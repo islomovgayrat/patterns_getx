@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:get/get.dart';
 import 'package:patterns_getx/controllers/home_controller.dart';
 
-import '../controllers/main_controller.dart';
 import '../models/post_model.dart';
 
-Widget itemMainPost(MainController controller, Post post) {
+Widget itemHomePost(HomeController controller, Post post) {
   return Slidable(
     startActionPane: ActionPane(
       motion: const ScrollMotion(),
@@ -14,7 +14,9 @@ Widget itemMainPost(MainController controller, Post post) {
       ),
       children: [
         SlidableAction(
-          onPressed: (BuildContext context) {},
+          onPressed: (BuildContext context) {
+            //Get.put(const UPage());
+          },
           backgroundColor: Colors.green,
           foregroundColor: Colors.white,
           icon: Icons.edit,

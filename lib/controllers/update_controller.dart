@@ -1,44 +1,41 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:patterns_getx/services/network.dart';
+import 'package:patterns_getx/pages/home_page.dart';
 
 import '../models/post_model.dart';
+import '../services/http_service.dart';
 
 class UpdateController extends GetxController {
   var isLoading = false.obs;
+  var post = Post().obs;
 
   var idController = TextEditingController();
   var titleController = TextEditingController();
   var bodyController = TextEditingController();
-  var userIdController = TextEditingController();
+  var uIdController = TextEditingController();
 
-  var post = Post().obs;
-
-  Future apiPostUpdate(Post post) async {
+  void apiPostUpdate() async {
     isLoading.value = true;
 
     int id = int.parse(idController.text.toString());
     String title = titleController.text.toString();
     String body = bodyController.text.toString();
-    int userId = int.parse(userIdController.text.toString());
+    int uId = int.parse(uIdController.text.toString());
 
     if (idController.text.isEmpty ||
         title.isEmpty ||
         body.isEmpty ||
-        userIdController.text.isEmpty) return;
+        uIdController.text.isEmpty) return;
 
-    //create
-    post = Post(id: id, title: title, body: body, userId: userId);
+    post.value = Post(id: id, title: title, body: body, userId: uId);
 
-    var response = await Network.PUT(
-        Network.API_UPDATE + post.id.toString(), Network.paramsUpdate(post));
+    var response =
+        Network.PUT(Network.API_UPDATE, Network.paramsUpdate(post.value));
 
     if (response != null) {
-      isLoading.value = false;
-      //onTapCreate();
       print(response);
-    } else {
-      print(response);
+      Get.toNamed(HomePage.id);
     }
+    isLoading.value = false;
   }
 }

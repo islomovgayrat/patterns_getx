@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:patterns_getx/controllers/splash_controller.dart';
+import 'package:patterns_getx/controllers/home_controller.dart';
 
+import '../controllers/main_controller.dart';
 import '../models/post_model.dart';
-import '../pages/update_page.dart';
 
-Widget itemSplashPost(SplashController controller, Post post) {
+Widget itemMainPost(MainController controller, Post post) {
   return Slidable(
     startActionPane: ActionPane(
       motion: const ScrollMotion(),
@@ -15,7 +15,7 @@ Widget itemSplashPost(SplashController controller, Post post) {
       children: [
         SlidableAction(
           onPressed: (BuildContext context) {
-            Navigator.pushNamed(context, UpdatePage.id);
+            //Navigator.pushNamed(context, UPage.id);
           },
           backgroundColor: Colors.green,
           foregroundColor: Colors.white,

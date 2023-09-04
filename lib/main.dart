@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:patterns_getx/pages/create2_page.dart';
 import 'package:patterns_getx/pages/create_page.dart';
-
 import 'package:patterns_getx/pages/home_page.dart';
-import 'package:patterns_getx/pages/main_page.dart';
-import 'package:patterns_getx/pages/splash_page.dart';
-import 'package:patterns_getx/pages/starter_page.dart';
-import 'package:patterns_getx/pages/update2_page.dart';
-import 'package:patterns_getx/pages/update_page.dart';
-import 'package:patterns_getx/services/bind_service.dart';
 import 'package:patterns_getx/services/di_service.dart';
 
 void main() async {
@@ -26,7 +18,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: const StarterPage(),
+      home: const HomePage(),
       // initialBinding: BindService(),
       // getPages: [
       //   GetPage(
@@ -36,13 +28,8 @@ class MyApp extends StatelessWidget {
       //   ),
       // ],
       routes: {
-        HomePage.id: (context) => const HomePage(),
-        MainPage.id: (context) => const MainPage(),
-        CreatePage.id: (context) => const CreatePage(),
-        UpdatePage.id: (context) => const UpdatePage(),
-        SplashPage.id: (context) => const SplashPage(),
-        CPage.id: (context) => const CPage(),
-        UPage.id: (context) => const UPage(),
+        HomePage.id: (_) => const HomePage(),
+        CreatePage.id: (_) => const CreatePage(),
       },
     );
   }

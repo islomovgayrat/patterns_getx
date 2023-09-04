@@ -1,14 +1,12 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:patterns_getx/controllers/home_controller.dart';
-import 'package:patterns_getx/pages/create_page.dart';
 
 import '../models/post_model.dart';
-import '../views/item_of_post.dart';
+import '../services/http_service.dart';
+import '../views/item_home_post.dart';
+import 'create_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -31,9 +29,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('GetX'),
-      ),
       body: Obx(
         () => Stack(
           children: [
@@ -54,7 +49,11 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, CreatePage.id);
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => const CreatePage(),
+            ),
+          );
         },
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
